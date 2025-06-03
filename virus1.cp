@@ -103,9 +103,21 @@ void count2(){
  PORTA=digits[1];
  PORTC=digits[7];
  delay_ms(500);
-
-
 }
+void count3(){
+ PORTA=digits[2];
+ PORTC=digits[0];
+ delay_ms(500);
+
+ PORTA=digits[2];
+ PORTC=digits[1];
+ delay_ms(500);
+
+ PORTA=digits[2];
+ PORTC=digits[2];
+ delay_ms(500);
+}
+
 void main() {
  cnt = 0;
  Keypad_Init();
@@ -120,28 +132,33 @@ void main() {
  PORTA = 0x00;
  PORTC = 0x00;
 
- portc =0;
  while(1){
  pressed =keypad();
- Lcd_Cmd(_LCD_CLEAR);
- while(pressed==49){
+
+ if(pressed==49){
 
  Lcd_Out(1, 1, "GO STRAIGHT");
  Lcd_Out(2, 1, "TURN LEFT");
- count1();
 
- pressed =keypad();
- }
+ count1();
  Lcd_Cmd(_LCD_CLEAR);
- while(pressed==50){
- count2();
+
+ }
+
+ if(pressed==50){
+ Lcd_Cmd(_LCD_CLEAR);
  Lcd_Out(1, 1, "GO STRAIGHT");
- pressed =keypad();
+ count2();
  }
- Lcd_Cmd(_LCD_CLEAR);
- while(pressed==51){
+
+ if(pressed==51){
  Lcd_Out(1, 1, "JUST TURN LEFT");
- pressed =keypad();
+ count3();
+ Lcd_Cmd(_LCD_CLEAR);
+ }
+ if(pressed== 50 || pressed ==53 || pressed== 56)
+ {
+
  }
 
 

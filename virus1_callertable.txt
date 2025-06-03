@@ -26,3 +26,4 @@ main
 			Delay_10us
 	count1
 	count2
+	count3
