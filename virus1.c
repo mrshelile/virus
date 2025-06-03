@@ -20,10 +20,10 @@ sbit LCD_D5_Direction at TRISD1_bit;
 sbit LCD_D6_Direction at TRISD2_bit;
 sbit LCD_D7_Direction at TRISD3_bit;
 // End LCD module connections
-#define LED4             RD6_bit
-#define LED1             RE0_bit
-#define LED2             RE2_bit
-#define LED3             RE3_bit
+//#define LED4             RD6_bit
+//#define LED1             RE0_bit
+//#define LED2             RE2_bit
+//#define LED3             RE3_bit
 
 char keypad(){
 do {
@@ -127,7 +127,11 @@ void main() {
   Lcd_Init();                              // Initialize LCD
   Lcd_Cmd(_LCD_CLEAR);                     // Clear display
   Lcd_Cmd(_LCD_CURSOR_OFF);                // Cursor off
+  // 2) Turn OFF both comparators so RA4 & RA5 become plain digital I/O:
+    C1ON_bit = 0;    // Disable Comparator 1
+    C2ON_bit = 0;    // Disable Comparator 2
 
+      VRCON  = 0x00;   // Voltage reference OFF
   Lcd_Out(1, 1, ":");
   ANSEL  = 0x00;  // Disable analog on RA0–RA4
   ANSELH = 0x00;  // Disable analog on rest (RA5, etc.)
@@ -146,6 +150,7 @@ void main() {
          Lcd_Out(1, 1, "GO STRAIGHT");
          Lcd_Out(2, 1, "TURN LEFT");
          count1();
+         count1();
          Lcd_Cmd(_LCD_CLEAR);
           pressed =keypad();
      }
@@ -154,13 +159,16 @@ void main() {
          Lcd_Cmd(_LCD_CLEAR);
          Lcd_Out(1, 1, "GO STRAIGHT");
            count2();
+            count2();
          pressed =keypad();
      }
 
      while(pressed==51){
+     Lcd_Cmd(_LCD_CLEAR);
          Lcd_Out(1, 1, "JUST TURN LEFT");
          count3();
-         Lcd_Cmd(_LCD_CLEAR);
+          count3();
+
          pressed =keypad();
      }
      while(pressed==51 || pressed==54 || pressed==57){

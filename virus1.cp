@@ -129,6 +129,10 @@ void main() {
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Cmd(_LCD_CURSOR_OFF);
 
+ C1ON_bit = 0;
+ C2ON_bit = 0;
+
+ VRCON = 0x00;
  Lcd_Out(1, 1, ":");
  ANSEL = 0x00;
  ANSELH = 0x00;
@@ -147,6 +151,7 @@ void main() {
  Lcd_Out(1, 1, "GO STRAIGHT");
  Lcd_Out(2, 1, "TURN LEFT");
  count1();
+ count1();
  Lcd_Cmd(_LCD_CLEAR);
  pressed =keypad();
  }
@@ -155,13 +160,16 @@ void main() {
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Out(1, 1, "GO STRAIGHT");
  count2();
+ count2();
  pressed =keypad();
  }
 
  while(pressed==51){
+ Lcd_Cmd(_LCD_CLEAR);
  Lcd_Out(1, 1, "JUST TURN LEFT");
  count3();
- Lcd_Cmd(_LCD_CLEAR);
+ count3();
+
  pressed =keypad();
  }
  while(pressed==51 || pressed==54 || pressed==57){
