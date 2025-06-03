@@ -108,15 +108,20 @@ void count2(){
   delay_ms(500);
 }
 void count3(){
-  PORTA=digits[2];
+  PORTA=(digits[2] & 0xEF);
+    PORTA.RA4 = 1;
   PORTC=digits[0];
   delay_ms(500);
 
-  PORTA=digits[2];
+//  PORTA=digits[2];
+  PORTA=(digits[2] & 0xEF);
+    PORTA.RA4 = 1;
   PORTC=digits[1];
   delay_ms(500);
 
-  PORTA=digits[2];
+//  PORTA=digits[2];
+  PORTA=(digits[2] & 0xEF);
+    PORTA.RA4 = 1;
   PORTC=digits[2];
   delay_ms(500);
 }
