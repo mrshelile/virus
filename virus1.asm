@@ -171,28 +171,194 @@ L_end_keypad:
 	RETURN
 ; end of _keypad
 
+_count1:
+
+;virus1.c,75 :: 		void count1(){
+;virus1.c,76 :: 		PORTC=digits[1];
+	MOVLW      6
+	MOVWF      PORTC+0
+;virus1.c,77 :: 		PORTA=digits[0];
+	MOVLW      63
+	MOVWF      PORTA+0
+;virus1.c,78 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count124:
+	DECFSZ     R13+0, 1
+	GOTO       L_count124
+	DECFSZ     R12+0, 1
+	GOTO       L_count124
+	DECFSZ     R11+0, 1
+	GOTO       L_count124
+	NOP
+	NOP
+;virus1.c,80 :: 		PORTA=digits[1];
+	MOVLW      6
+	MOVWF      PORTA+0
+;virus1.c,81 :: 		PORTC=digits[1];
+	MOVLW      6
+	MOVWF      PORTC+0
+;virus1.c,82 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count125:
+	DECFSZ     R13+0, 1
+	GOTO       L_count125
+	DECFSZ     R12+0, 1
+	GOTO       L_count125
+	DECFSZ     R11+0, 1
+	GOTO       L_count125
+	NOP
+	NOP
+;virus1.c,84 :: 		PORTA=digits[1];
+	MOVLW      6
+	MOVWF      PORTA+0
+;virus1.c,85 :: 		PORTC=digits[2];
+	MOVLW      91
+	MOVWF      PORTC+0
+;virus1.c,86 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count126:
+	DECFSZ     R13+0, 1
+	GOTO       L_count126
+	DECFSZ     R12+0, 1
+	GOTO       L_count126
+	DECFSZ     R11+0, 1
+	GOTO       L_count126
+	NOP
+	NOP
+;virus1.c,88 :: 		}
+L_end_count1:
+	RETURN
+; end of _count1
+
+_count2:
+
+;virus1.c,89 :: 		void count2(){
+;virus1.c,90 :: 		PORTA=digits[1];
+	MOVLW      6
+	MOVWF      PORTA+0
+;virus1.c,91 :: 		PORTC=digits[5];
+	MOVLW      109
+	MOVWF      PORTC+0
+;virus1.c,92 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count227:
+	DECFSZ     R13+0, 1
+	GOTO       L_count227
+	DECFSZ     R12+0, 1
+	GOTO       L_count227
+	DECFSZ     R11+0, 1
+	GOTO       L_count227
+	NOP
+	NOP
+;virus1.c,94 :: 		PORTA=digits[1];
+	MOVLW      6
+	MOVWF      PORTA+0
+;virus1.c,95 :: 		PORTC=digits[6];
+	MOVLW      125
+	MOVWF      PORTC+0
+;virus1.c,96 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count228:
+	DECFSZ     R13+0, 1
+	GOTO       L_count228
+	DECFSZ     R12+0, 1
+	GOTO       L_count228
+	DECFSZ     R11+0, 1
+	GOTO       L_count228
+	NOP
+	NOP
+;virus1.c,98 :: 		PORTA=digits[1];
+	MOVLW      6
+	MOVWF      PORTA+0
+;virus1.c,99 :: 		PORTC=digits[3];
+	MOVLW      79
+	MOVWF      PORTC+0
+;virus1.c,100 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count229:
+	DECFSZ     R13+0, 1
+	GOTO       L_count229
+	DECFSZ     R12+0, 1
+	GOTO       L_count229
+	DECFSZ     R11+0, 1
+	GOTO       L_count229
+	NOP
+	NOP
+;virus1.c,102 :: 		PORTA=digits[1];
+	MOVLW      6
+	MOVWF      PORTA+0
+;virus1.c,103 :: 		PORTC=digits[7];
+	MOVLW      7
+	MOVWF      PORTC+0
+;virus1.c,104 :: 		delay_ms(500);
+	MOVLW      6
+	MOVWF      R11+0
+	MOVLW      19
+	MOVWF      R12+0
+	MOVLW      173
+	MOVWF      R13+0
+L_count230:
+	DECFSZ     R13+0, 1
+	GOTO       L_count230
+	DECFSZ     R12+0, 1
+	GOTO       L_count230
+	DECFSZ     R11+0, 1
+	GOTO       L_count230
+	NOP
+	NOP
+;virus1.c,107 :: 		}
+L_end_count2:
+	RETURN
+; end of _count2
+
 _main:
 
-;virus1.c,76 :: 		void main() {
-;virus1.c,77 :: 		cnt = 0;                                 // Reset counter
+;virus1.c,108 :: 		void main() {
+;virus1.c,109 :: 		cnt = 0;                                 // Reset counter
 	CLRF       _cnt+0
-;virus1.c,78 :: 		Keypad_Init();                           // Initialize Keypad
+;virus1.c,110 :: 		Keypad_Init();                           // Initialize Keypad
 	CALL       _Keypad_Init+0
-;virus1.c,79 :: 		ANSEL  = 0;                              // Configure AN pins as digital I/O
-	CLRF       ANSEL+0
-;virus1.c,80 :: 		ANSELH = 0;
-	CLRF       ANSELH+0
-;virus1.c,81 :: 		Lcd_Init();                              // Initialize LCD
+;virus1.c,111 :: 		Lcd_Init();                              // Initialize LCD
 	CALL       _Lcd_Init+0
-;virus1.c,82 :: 		Lcd_Cmd(_LCD_CLEAR);                     // Clear display
+;virus1.c,112 :: 		Lcd_Cmd(_LCD_CLEAR);                     // Clear display
 	MOVLW      1
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;virus1.c,83 :: 		Lcd_Cmd(_LCD_CURSOR_OFF);                // Cursor off
+;virus1.c,113 :: 		Lcd_Cmd(_LCD_CURSOR_OFF);                // Cursor off
 	MOVLW      12
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;virus1.c,84 :: 		Lcd_Out(1, 1, ":");
+;virus1.c,114 :: 		Lcd_Out(1, 1, ":");
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -200,23 +366,37 @@ _main:
 	MOVLW      ?lstr1_virus1+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;virus1.c,85 :: 		TRISC = 0X00;
+;virus1.c,115 :: 		ANSEL  = 0x00;  // Disable analog on RA0–RA4
+	CLRF       ANSEL+0
+;virus1.c,116 :: 		ANSELH = 0x00;  // Disable analog on rest (RA5, etc.)
+	CLRF       ANSELH+0
+;virus1.c,117 :: 		TRISA  = 0x00;  // Set PORTA as output
+	CLRF       TRISA+0
+;virus1.c,118 :: 		TRISC  = 0x00;  // Set PORTC as output
 	CLRF       TRISC+0
-;virus1.c,86 :: 		portc =0;
+;virus1.c,119 :: 		PORTA  = 0x00;
+	CLRF       PORTA+0
+;virus1.c,120 :: 		PORTC  = 0x00;
 	CLRF       PORTC+0
-;virus1.c,87 :: 		while(1){
-L_main24:
-;virus1.c,88 :: 		pressed =keypad();
+;virus1.c,122 :: 		portc =0;
+	CLRF       PORTC+0
+;virus1.c,123 :: 		while(1){
+L_main31:
+;virus1.c,124 :: 		pressed =keypad();
 	CALL       _keypad+0
 	MOVF       R0+0, 0
 	MOVWF      _pressed+0
-;virus1.c,89 :: 		while(pressed==49){
-L_main26:
+;virus1.c,125 :: 		Lcd_Cmd(_LCD_CLEAR);
+	MOVLW      1
+	MOVWF      FARG_Lcd_Cmd_out_char+0
+	CALL       _Lcd_Cmd+0
+;virus1.c,126 :: 		while(pressed==49){
+L_main33:
 	MOVF       _pressed+0, 0
 	XORLW      49
 	BTFSS      STATUS+0, 2
-	GOTO       L_main27
-;virus1.c,91 :: 		Lcd_Out(1, 1, "GO STRAIGHT");
+	GOTO       L_main34
+;virus1.c,128 :: 		Lcd_Out(1, 1, "GO STRAIGHT");
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -224,7 +404,7 @@ L_main26:
 	MOVLW      ?lstr2_virus1+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;virus1.c,92 :: 		Lcd_Out(2, 1, "TURN LEFT");
+;virus1.c,129 :: 		Lcd_Out(2, 1, "TURN LEFT");
 	MOVLW      2
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -232,24 +412,28 @@ L_main26:
 	MOVLW      ?lstr3_virus1+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;virus1.c,94 :: 		pressed =keypad();
+;virus1.c,130 :: 		count1();
+	CALL       _count1+0
+;virus1.c,132 :: 		pressed =keypad();
 	CALL       _keypad+0
 	MOVF       R0+0, 0
 	MOVWF      _pressed+0
-;virus1.c,95 :: 		}
-	GOTO       L_main26
-L_main27:
-;virus1.c,96 :: 		Lcd_Cmd(_LCD_CLEAR);
+;virus1.c,133 :: 		}
+	GOTO       L_main33
+L_main34:
+;virus1.c,134 :: 		Lcd_Cmd(_LCD_CLEAR);
 	MOVLW      1
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;virus1.c,97 :: 		while(pressed==50){
-L_main28:
+;virus1.c,135 :: 		while(pressed==50){
+L_main35:
 	MOVF       _pressed+0, 0
 	XORLW      50
 	BTFSS      STATUS+0, 2
-	GOTO       L_main29
-;virus1.c,98 :: 		Lcd_Out(1, 1, "GO STRAIGHT");
+	GOTO       L_main36
+;virus1.c,136 :: 		count2();
+	CALL       _count2+0
+;virus1.c,137 :: 		Lcd_Out(1, 1, "GO STRAIGHT");
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -257,24 +441,24 @@ L_main28:
 	MOVLW      ?lstr4_virus1+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;virus1.c,99 :: 		pressed =keypad();
+;virus1.c,138 :: 		pressed =keypad();
 	CALL       _keypad+0
 	MOVF       R0+0, 0
 	MOVWF      _pressed+0
-;virus1.c,100 :: 		}
-	GOTO       L_main28
-L_main29:
-;virus1.c,101 :: 		Lcd_Cmd(_LCD_CLEAR);
+;virus1.c,139 :: 		}
+	GOTO       L_main35
+L_main36:
+;virus1.c,140 :: 		Lcd_Cmd(_LCD_CLEAR);
 	MOVLW      1
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;virus1.c,102 :: 		while(pressed==51){
-L_main30:
+;virus1.c,141 :: 		while(pressed==51){
+L_main37:
 	MOVF       _pressed+0, 0
 	XORLW      51
 	BTFSS      STATUS+0, 2
-	GOTO       L_main31
-;virus1.c,103 :: 		Lcd_Out(1, 1, "JUST TURN LEFT");
+	GOTO       L_main38
+;virus1.c,142 :: 		Lcd_Out(1, 1, "JUST TURN LEFT");
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -282,20 +466,16 @@ L_main30:
 	MOVLW      ?lstr5_virus1+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;virus1.c,104 :: 		pressed =keypad();
+;virus1.c,143 :: 		pressed =keypad();
 	CALL       _keypad+0
 	MOVF       R0+0, 0
 	MOVWF      _pressed+0
-;virus1.c,105 :: 		}
-	GOTO       L_main30
-L_main31:
-;virus1.c,106 :: 		Lcd_Cmd(_LCD_CLEAR);
-	MOVLW      1
-	MOVWF      FARG_Lcd_Cmd_out_char+0
-	CALL       _Lcd_Cmd+0
-;virus1.c,108 :: 		}
-	GOTO       L_main24
-;virus1.c,109 :: 		}
+;virus1.c,144 :: 		}
+	GOTO       L_main37
+L_main38:
+;virus1.c,147 :: 		}
+	GOTO       L_main31
+;virus1.c,148 :: 		}
 L_end_main:
 	GOTO       $+0
 ; end of _main
