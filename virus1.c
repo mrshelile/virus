@@ -20,6 +20,10 @@ sbit LCD_D5_Direction at TRISD1_bit;
 sbit LCD_D6_Direction at TRISD2_bit;
 sbit LCD_D7_Direction at TRISD3_bit;
 // End LCD module connections
+#define LED4             RD6_bit
+#define LED1             RE0_bit
+#define LED2             RE2_bit
+#define LED3             RE3_bit
 
 char keypad(){
 do {
@@ -132,6 +136,8 @@ void main() {
   PORTA  = 0x00;
   PORTC  = 0x00;
 //  int first,second,third =0;
+    TRISD.RD6=0;
+    PORTE =0X00;
   while(1){
 
      pressed =keypad();
@@ -159,11 +165,19 @@ void main() {
      }
      while(pressed==51 || pressed==54 || pressed==57){
          Lcd_Out(1, 1, "message flushes");
+         PORTE=0XFF;
+         PORTD.RD6=1;
          delay_ms(1000);
+         PORTE=0X00;
+         PORTD.RD6=0;
          Lcd_Cmd(_LCD_CLEAR);
+         PORTE=0XFF;
+         PORTD.RD6=1;
          Lcd_Out(1, 1, "message flushes");
          delay_ms(1000);
          Lcd_Cmd(_LCD_CLEAR);
+         PORTE=0X00;
+         PORTD.RD6=0;
          pressed =keypad();
      }
 
