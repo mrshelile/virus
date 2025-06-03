@@ -547,7 +547,86 @@ L_main40:
 ;virus1.c,159 :: 		}
 	GOTO       L_main40
 L_main41:
-;virus1.c,162 :: 		}}
+;virus1.c,160 :: 		while(pressed==51 || pressed==54 || pressed==57){
+L_main42:
+	MOVF       _pressed+0, 0
+	XORLW      51
+	BTFSC      STATUS+0, 2
+	GOTO       L__main48
+	MOVF       _pressed+0, 0
+	XORLW      54
+	BTFSC      STATUS+0, 2
+	GOTO       L__main48
+	MOVF       _pressed+0, 0
+	XORLW      57
+	BTFSC      STATUS+0, 2
+	GOTO       L__main48
+	GOTO       L_main43
+L__main48:
+;virus1.c,161 :: 		Lcd_Out(1, 1, "message flushes");
+	MOVLW      1
+	MOVWF      FARG_Lcd_Out_row+0
+	MOVLW      1
+	MOVWF      FARG_Lcd_Out_column+0
+	MOVLW      ?lstr6_virus1+0
+	MOVWF      FARG_Lcd_Out_text+0
+	CALL       _Lcd_Out+0
+;virus1.c,162 :: 		delay_ms(1000);
+	MOVLW      11
+	MOVWF      R11+0
+	MOVLW      38
+	MOVWF      R12+0
+	MOVLW      93
+	MOVWF      R13+0
+L_main46:
+	DECFSZ     R13+0, 1
+	GOTO       L_main46
+	DECFSZ     R12+0, 1
+	GOTO       L_main46
+	DECFSZ     R11+0, 1
+	GOTO       L_main46
+	NOP
+	NOP
+;virus1.c,163 :: 		Lcd_Cmd(_LCD_CLEAR);
+	MOVLW      1
+	MOVWF      FARG_Lcd_Cmd_out_char+0
+	CALL       _Lcd_Cmd+0
+;virus1.c,164 :: 		Lcd_Out(1, 1, "message flushes");
+	MOVLW      1
+	MOVWF      FARG_Lcd_Out_row+0
+	MOVLW      1
+	MOVWF      FARG_Lcd_Out_column+0
+	MOVLW      ?lstr7_virus1+0
+	MOVWF      FARG_Lcd_Out_text+0
+	CALL       _Lcd_Out+0
+;virus1.c,165 :: 		delay_ms(1000);
+	MOVLW      11
+	MOVWF      R11+0
+	MOVLW      38
+	MOVWF      R12+0
+	MOVLW      93
+	MOVWF      R13+0
+L_main47:
+	DECFSZ     R13+0, 1
+	GOTO       L_main47
+	DECFSZ     R12+0, 1
+	GOTO       L_main47
+	DECFSZ     R11+0, 1
+	GOTO       L_main47
+	NOP
+	NOP
+;virus1.c,166 :: 		Lcd_Cmd(_LCD_CLEAR);
+	MOVLW      1
+	MOVWF      FARG_Lcd_Cmd_out_char+0
+	CALL       _Lcd_Cmd+0
+;virus1.c,167 :: 		pressed =keypad();
+	CALL       _keypad+0
+	MOVF       R0+0, 0
+	MOVWF      _pressed+0
+;virus1.c,168 :: 		}
+	GOTO       L_main42
+L_main43:
+;virus1.c,171 :: 		}}
 	GOTO       L_main34
 L_end_main:
 	GOTO       $+0

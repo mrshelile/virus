@@ -158,6 +158,15 @@ void main() {
  Lcd_Cmd(_LCD_CLEAR);
  pressed =keypad();
  }
+ while(pressed==51 || pressed==54 || pressed==57){
+ Lcd_Out(1, 1, "message flushes");
+ delay_ms(1000);
+ Lcd_Cmd(_LCD_CLEAR);
+ Lcd_Out(1, 1, "message flushes");
+ delay_ms(1000);
+ Lcd_Cmd(_LCD_CLEAR);
+ pressed =keypad();
+ }
 
 
  }}
