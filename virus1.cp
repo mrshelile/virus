@@ -38,17 +38,17 @@ do {
 
 
 
- case 1: return 55; break;
- case 2: return 56; break;
- case 3: return 57; break;
+ case 1: return 49; break;
+ case 2: return 50; break;
+ case 3: return 51; break;
  case 4: return 47; break;
  case 5: return 52; break;
  case 6: return 53; break;
  case 7: return 54; break;
  case 8: return 42; break;
- case 9: return 49; break;
- case 10: return 50; break;
- case 11: return 51; break;
+ case 9: return 55; break;
+ case 10: return 56; break;
+ case 11: return 57; break;
  case 12: return 45; break;
  case 13: return 42; break;
  case 14: return 48; break;
@@ -61,6 +61,18 @@ do {
  } while (1);
 }
 
+const unsigned char digits[10] = {
+ 0x3F,
+ 0x06,
+ 0x5B,
+ 0x4F,
+ 0x66,
+ 0x6D,
+ 0x7D,
+ 0x07,
+ 0x7F,
+ 0x6F
+};
 
 void main() {
  cnt = 0;
@@ -71,9 +83,28 @@ void main() {
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Cmd(_LCD_CURSOR_OFF);
  Lcd_Out(1, 1, ":");
-
+ TRISC = 0X00;
+ portc =0;
  while(1){
  pressed =keypad();
- LCD_CHR_CP(pressed);
+ while(pressed==49){
+
+ Lcd_Out(1, 1, "GO STRAIGHT");
+ Lcd_Out(2, 1, "TURN LEFT");
+
+ pressed =keypad();
+ }
+ Lcd_Cmd(_LCD_CLEAR);
+ while(pressed==50){
+ Lcd_Out(1, 1, "GO STRAIGHT");
+ pressed =keypad();
+ }
+ Lcd_Cmd(_LCD_CLEAR);
+ while(pressed==51){
+ Lcd_Out(1, 1, "JUST TURN LEFT");
+ pressed =keypad();
+ }
+ Lcd_Cmd(_LCD_CLEAR);
+
  }
 }

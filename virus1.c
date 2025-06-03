@@ -6,19 +6,19 @@ char  keypadPort at PORTB;
 // End Keypad module connections
 
 // LCD module connections
-sbit LCD_RS at RA4_bit;
-sbit LCD_EN at RA5_bit;
-sbit LCD_D4 at RA0_bit;
-sbit LCD_D5 at RA1_bit;
-sbit LCD_D6 at RA2_bit;
-sbit LCD_D7 at RA3_bit;
+sbit LCD_RS at RD4_bit;
+sbit LCD_EN at RD5_bit;
+sbit LCD_D4 at RD0_bit;
+sbit LCD_D5 at RD1_bit;
+sbit LCD_D6 at RD2_bit;
+sbit LCD_D7 at RD3_bit;
 
-sbit LCD_RS_Direction at TRISA4_bit;
-sbit LCD_EN_Direction at TRISA5_bit;
-sbit LCD_D4_Direction at TRISA0_bit;
-sbit LCD_D5_Direction at TRISA1_bit;
-sbit LCD_D6_Direction at TRISA2_bit;
-sbit LCD_D7_Direction at TRISA3_bit;
+sbit LCD_RS_Direction at TRISD4_bit;
+sbit LCD_EN_Direction at TRISD5_bit;
+sbit LCD_D4_Direction at TRISD0_bit;
+sbit LCD_D5_Direction at TRISD1_bit;
+sbit LCD_D6_Direction at TRISD2_bit;
+sbit LCD_D7_Direction at TRISD3_bit;
 // End LCD module connections
 
 char keypad(){
@@ -37,17 +37,17 @@ do {
       //case 12: kp = 35; break;  // '#'
       //default: kp += 48;
 
-      case  1: return 55; break; // 7        // Uncomment this block for keypad4x4
-      case  2: return 56; break; // 8
-      case  3: return 57; break; // 3
+      case  1: return 49; break; // 1        // Uncomment this block for keypad4x4
+      case  2: return 50; break; // 2
+      case  3: return 51; break; // 3
       case  4: return 47; break; // A or /
       case  5: return 52; break; // 4
       case  6: return 53; break; // 5
       case  7: return 54; break; // 6
       case  8: return 42; break; // B or *
-      case  9: return 49; break; // 1
-      case 10: return 50; break; // 2
-      case 11: return 51; break; // 9
+      case  9: return 55; break; // 7
+      case 10: return 56; break; // 8
+      case 11: return 57; break; // 9
       case 12: return 45; break; // C or -
       case 13: return 42; break; // *
       case 14: return 48; break; // 0
@@ -59,7 +59,19 @@ do {
                     // Display counter value on LCD
   } while (1);
 }
-
+// Hex values for digits 0–9 on a common cathode 7-segment display
+const unsigned char digits[10] = {
+    0x3F, // 0 => 0011 1111 (segments: A B C D E F)
+    0x06, // 1 => 0000 0110 (segments: B C)
+    0x5B, // 2 => 0101 1011 (segments: A B D E G)
+    0x4F, // 3 => 0100 1111 (segments: A B C D G)
+    0x66, // 4 => 0110 0110 (segments: B C F G)
+    0x6D, // 5 => 0110 1101 (segments: A C D F G)
+    0x7D, // 6 => 0111 1101 (segments: A C D E F G)
+    0x07, // 7 => 0000 0111 (segments: A B C)
+    0x7F, // 8 => 0111 1111 (segments: all except DP)
+    0x6F  // 9 => 0110 1111 (segments: A B C D F G)
+};
 
 void main() {
   cnt = 0;                                 // Reset counter
@@ -70,9 +82,28 @@ void main() {
   Lcd_Cmd(_LCD_CLEAR);                     // Clear display
   Lcd_Cmd(_LCD_CURSOR_OFF);                // Cursor off
   Lcd_Out(1, 1, ":");
-
+  TRISC = 0X00;
+  portc =0;
   while(1){
      pressed =keypad();
-     LCD_CHR_CP(pressed);
+     while(pressed==49){
+
+         Lcd_Out(1, 1, "GO STRAIGHT");
+         Lcd_Out(2, 1, "TURN LEFT");
+//         PORTC=digits[i++];
+         pressed =keypad();
+     }
+     Lcd_Cmd(_LCD_CLEAR);
+     while(pressed==50){
+         Lcd_Out(1, 1, "GO STRAIGHT");
+         pressed =keypad();
+     }
+      Lcd_Cmd(_LCD_CLEAR);
+     while(pressed==51){
+         Lcd_Out(1, 1, "JUST TURN LEFT");
+         pressed =keypad();
+     }
+     Lcd_Cmd(_LCD_CLEAR);
+
   }
 }
