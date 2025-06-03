@@ -344,8 +344,8 @@ L_end_count2:
 _count3:
 
 ;virus1.c,110 :: 		void count3(){
-;virus1.c,111 :: 		PORTA=(digits[2] & 0xEF);
-	MOVLW      75
+;virus1.c,111 :: 		PORTA=digits[2];
+	MOVLW      91
 	MOVWF      PORTA+0
 ;virus1.c,112 :: 		PORTA.RA4 = 1;
 	BSF        PORTA+0, 4
@@ -368,8 +368,8 @@ L_count331:
 	GOTO       L_count331
 	NOP
 	NOP
-;virus1.c,117 :: 		PORTA=(digits[2] & 0xEF);
-	MOVLW      75
+;virus1.c,117 :: 		PORTA=digits[2];
+	MOVLW      91
 	MOVWF      PORTA+0
 ;virus1.c,118 :: 		PORTA.RA4 = 1;
 	BSF        PORTA+0, 4
@@ -392,8 +392,8 @@ L_count332:
 	GOTO       L_count332
 	NOP
 	NOP
-;virus1.c,123 :: 		PORTA=(digits[2] & 0xEF);
-	MOVLW      75
+;virus1.c,123 :: 		PORTA=digits[2];
+	MOVLW      91
 	MOVWF      PORTA+0
 ;virus1.c,124 :: 		PORTA.RA4 = 1;
 	BSF        PORTA+0, 4
