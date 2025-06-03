@@ -73,8 +73,8 @@ const unsigned char digits[10] = {
     0x6F  // 9 => 0110 1111 (segments: A B C D F G)
 };
 void count1(){
-  PORTC=digits[1];
-  PORTA=digits[0];
+  PORTA=digits[1];
+  PORTC=digits[0];
   delay_ms(500);
 
   PORTA=digits[1];
@@ -123,6 +123,7 @@ void main() {
   Lcd_Init();                              // Initialize LCD
   Lcd_Cmd(_LCD_CLEAR);                     // Clear display
   Lcd_Cmd(_LCD_CURSOR_OFF);                // Cursor off
+
   Lcd_Out(1, 1, ":");
   ANSEL  = 0x00;  // Disable analog on RA0–RA4
   ANSELH = 0x00;  // Disable analog on rest (RA5, etc.)
@@ -132,34 +133,36 @@ void main() {
   PORTC  = 0x00;
 //  int first,second,third =0;
   while(1){
-     pressed =keypad();
 
-     if(pressed==49){
+     pressed =keypad();
+     while(pressed==49){
 
          Lcd_Out(1, 1, "GO STRAIGHT");
          Lcd_Out(2, 1, "TURN LEFT");
-
          count1();
          Lcd_Cmd(_LCD_CLEAR);
-
+          pressed =keypad();
      }
 
-     if(pressed==50){
-          Lcd_Cmd(_LCD_CLEAR);
+     while(pressed==50){
+         Lcd_Cmd(_LCD_CLEAR);
          Lcd_Out(1, 1, "GO STRAIGHT");
            count2();
+         pressed =keypad();
      }
 
-     if(pressed==51){
+     while(pressed==51){
          Lcd_Out(1, 1, "JUST TURN LEFT");
          count3();
-          Lcd_Cmd(_LCD_CLEAR);
+         Lcd_Cmd(_LCD_CLEAR);
+         pressed =keypad();
      }
-     if(pressed== 50 || pressed ==53 || pressed== 56)
-     {
+     while(pressed==51){
+         Lcd_Out(1, 1, "JUST TURN LEFT");
+         count3();
+         Lcd_Cmd(_LCD_CLEAR);
+         pressed =keypad();
+     }
+
      
-     }
-
-
-  }
-}
+     }}
